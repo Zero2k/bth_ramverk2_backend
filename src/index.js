@@ -1,6 +1,9 @@
 import express from 'express';
+import { createServer } from 'http';
 
-const PORT = process.env.DBWEBB_PORT || '8080';
+import contants from './config/constants';
+import middlewares from './config/middlewares';
+
 
 const app = express();
 
@@ -8,10 +11,14 @@ app.get('/', (req, res) => {
   res.status(200).send('Hello World');
 });
 
-app.listen(PORT, err => {
+middlewares(app);
+
+const grahpQLServer = createServer(app);
+
+grahpQLServer.listen(contants.PORT, err => {
   if (err) {
     console.error(err);
   }
 
-  console.log(`Server listen to port:`, PORT);
+  console.log(`Server listen to port:`, contants.PORT);
 });
