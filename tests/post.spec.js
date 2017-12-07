@@ -1,8 +1,9 @@
 import axios from 'axios';
+import constants from '../src/config/constants';
 
 describe('Test post resolvers in GraphQL', () => {
   test('It should return all posts', async () => {
-    const response = await axios.post('http://localhost:8080/graphql', {
+    const response = await axios.post(`http://localhost:${constants.PORT}/graphql`, {
       query: `
       query {
         allReports {

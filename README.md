@@ -20,7 +20,10 @@ You will need:
 3. yarn start - start the backend
 
 - DOCKER
-docker-compose up
+# Development
+docker-compose up development
+# Production
+docker-compose up backend
 ```
 
 ## Further documentation

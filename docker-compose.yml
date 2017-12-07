@@ -5,7 +5,7 @@ services:
     user: "node"
     working_dir: /home/node/app
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - DBWEBB_PORT=8080
     volumes:
       - ./:/home/node/app
@@ -18,7 +18,7 @@ services:
     user: "node"
     working_dir: /home/node/app
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - DBWEBB_PORT=8080
     volumes:
       - ./:/home/node/app
@@ -31,10 +31,47 @@ services:
     user: "node"
     working_dir: /home/node/app
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - DBWEBB_PORT=8080
     volumes:
       - ./:/home/node/app
     ports:
       - "1339:8080"
     command: "yarn start"
+
+  node_alpine:
+    build:
+        context: .
+        dockerfile: docker/Dockerfile-node-alpine
+    volumes:
+      - ./:/app/
+      - /app/node_modules/
+    ports:
+      - "8080:8080"
+    command: "yarn start"
+
+  development:
+    image: "node:9"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+      - DBWEBB_PORT=8080
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "8080:8080"
+    command: "yarn start"
+
+  backend:
+    image: "node:9"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+      - DBWEBB_PORT=8080
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "8080:8080"
+    command: "yarn start:production"

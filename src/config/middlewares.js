@@ -16,7 +16,6 @@ const schema = makeExecutableSchema({
   resolvers,
 });
 
-
 export default app => {
   app.use(cors('*'));
   app.use(bodyParser.json());
