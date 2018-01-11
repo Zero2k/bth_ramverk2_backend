@@ -7,7 +7,7 @@ export default {
       return posts;
     },
     singleReport: (parent, { id }, context) => {
-      let result = _.find(posts, { id });
+      const result = _.find(posts, { id });
       return result;
     },
   },
