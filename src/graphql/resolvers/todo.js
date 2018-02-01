@@ -13,12 +13,11 @@ export default {
   Mutation: {
     createTodo: async (parent, args, context) => {
       try {
-        // const todoData = { title, text };
         const todo = Todo.create(args);
-	if (!todo) {
-	  return false;
-	}
-	return true;
+        if (!todo) {
+          return false;
+        }
+        return true;
       } catch (err) {
         throw err;
       }

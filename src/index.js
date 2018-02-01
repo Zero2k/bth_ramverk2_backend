@@ -8,12 +8,6 @@ import socket from './config/socket';
 
 const app = express();
 
-if (process.env.NODE_ENV === 'development') {
-  app.get('/', (req, res) => {
-    res.status(200).send('Hello World');
-  });
-}
-
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../../frontend/build')));
   app.use('*', express.static(path.join(__dirname, '../../frontend/build')));
